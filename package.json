@@ -9,9 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "firebase": "3.5.1",
     "react": "15.3.2",
     "react-dom": "15.3.2",
-    "react-router": "2.8.1"
+    "react-router": "2.8.1",
+    "reactfire": "1.0.0"
   },
   "devDependencies": {
     "babel-core": "6.17.0",
