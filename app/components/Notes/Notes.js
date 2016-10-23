@@ -1,12 +1,13 @@
 import React from 'react'
+import NotesList from './NotesList'
 
 const Notes = React.createClass({
   render: function() {
     return (
       <div>
-        <p>NOTES </p>
-        <p> {this.props.notes} </p>
-        </div>
+        <h3> Notes for {this.props.username} </h3>
+        <NotesList notes={this.props.notes} />
+      </div>
     )
   }
 })
