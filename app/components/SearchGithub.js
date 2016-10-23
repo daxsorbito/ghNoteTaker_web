@@ -9,7 +9,7 @@ const SearchGithub = React.createClass({
   handleSubmit: function() {
     const username = this.usernameRef.value
     this.usernameRef.value = ''
-    hashHistory.push({pathname: "profile/" + username})
+    hashHistory.push({pathname: "/profile/" + username})
   },
   render: function() {
     return (

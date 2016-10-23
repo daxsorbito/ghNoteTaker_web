@@ -26,16 +26,24 @@ const Profile = React.createClass({
   },
   componentDidMount: function() {
      this.ref = new Firebase.database().ref('/')
-     const childRef = this.ref.child(this.props.params.username)
+     this.init(this.props.params.username)
+  },
+  componentWillReceiveProps: function(nextProps) {
+    this.unbind('notes')
+    this.init(nextProps.params.username)
+  },
+  init: function(username) {
+     const childRef = this.ref.child(username)
      this.bindAsArray(childRef, 'notes')
 
-     helpers.getGithubInfo(this.props.params.username)
+     helpers.getGithubInfo(username)
      .then(function(data) {
        this.setState({
          bio: data.bio,
          repos: data.repos
        })
      }.bind(this))
+
   },
   componentWillUnmount: function() {
      this.unbind('notes')
@@ -48,11 +56,9 @@ const Profile = React.createClass({
       <div className="row">
         <div className="col-md-4">
           <UserProfile username={this.props.params.username} bio={this.state.bio}/>
-          User Profile Component --> {this.props.params.username}
         </div>
         <div className="col-md-4">
           <Repos username={this.props.params.username} repos={this.state.repos}/>
-          Repos Component
         </div>
         <div className="col-md-4">
           <Notes
