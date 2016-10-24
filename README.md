@@ -4,6 +4,6 @@ $ npm i
 ```
 then
 ```bash
-npm start
+$ npm start
 ```
 then browse to **public\index.html**
